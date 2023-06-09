@@ -1,0 +1,75 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": [
+      "es2017",
+      "dom"
+    ],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@auth-guard-lib": [
+        "libs/backend/auth-guard-lib/src/index.ts"
+      ],
+      "@aws-s3-lib": [
+        "libs/backend/aws-s3-lib/src/index.ts"
+      ],
+      "@aws-secret-manager-lib": [
+        "libs/backend/aws-secret-manager-lib/src/index.ts"
+      ],
+      "@cognito-lib": [
+        "libs/backend/cognito-lib/src/index.ts"
+      ],
+      "@core-lib": [
+        "libs/backend/core-lib/src/index.ts"
+      ],
+      "@dto": [
+        "libs/dto/src/index.ts"
+      ],
+      "@dynamo-db-lib": [
+        "libs/backend/dynamo-db-lib/src/index.ts"
+      ],
+      "@prisma-db-lib": [
+        "libs/backend/prisma-db-lib/src/index.ts"
+      ],
+      "@ui-components": [
+        "libs/ui/src/index.ts"
+      ],
+      "@ui-types/*": [
+        "libs/ui/src/types/*"
+      ],
+      "@ui/*": [
+        "libs/ui/*"
+      ],
+      "@ui/styles": [
+        "libs/ui/styles/index.scss"
+      ],
+      "@user-service-prisma-lib": [
+        "libs/backend/user-service-prisma-lib/src/index.ts"
+      ],
+      "@utils": [
+        "libs/utils/src/index.ts"
+      ],
+      "@web-app/*": [
+        "apps/web-app/*"
+      ]
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ],
+  "include": [
+    "**/*.scss"
+  ]
+}

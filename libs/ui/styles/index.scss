@@ -1,0 +1,31 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@import './calendar.scss';
+
+@font-face {
+    font-family: 'Avenir';
+    src: url('../assets/fonts/Avenir-Roman.ttf');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Avenir';
+    src: url('../assets/fonts/Avenir-Medium.ttf');
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'Avenir';
+    src: url('../assets/fonts/Avenir-Heavy.ttf');
+    font-weight: 900;
+}
+
+@layer base {
+    body {
+        font-family: Avenir, sans-serif;
+        font-size: 1em;
+        letter-spacing: 0.5px;
+    }
+}

@@ -1,0 +1,46 @@
+service: medxer-sass-app-auth
+useDotenv: true
+package:
+  excludeDevDependencies: true
+  patterns:
+  - 'node_modules/**'
+  - '!node_modules/.prisma/client/libquery_engine-*'
+  - 'node_modules/.prisma/client/libquery_engine-rhel-*'
+  - '!node_modules/prisma/libquery_engine-*'
+  - '!node_modules/@prisma/engines/**'
+  
+  
+
+plugins:
+  - serverless-offline
+  - serverless-plugin-common-excludes
+  - serverless-plugin-optimize 
+  - serverless-dotenv-plugin
+  
+
+custom:
+  serverless-offline:
+    httpPort: 8000
+  optimize:
+    external: ['swagger-ui-dist']  
+
+  
+provider:
+  name: aws
+  stage: ${opt:stage, 'dev'}
+  runtime: nodejs18.x
+  region: us-east-1
+  deploymentMethod: direct
+  profile: medxer-sass
+
+functions:
+  auth-service:
+    handler: main.handler
+    timeout: 900
+    package:
+      individually: true
+    events:      
+      - http:
+          cors: true
+          method: any
+          path: 'authentication/{proxy+}'

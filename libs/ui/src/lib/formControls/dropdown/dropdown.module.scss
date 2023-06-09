@@ -1,0 +1,43 @@
+.dropdown-wrapper {
+    .dropdown__content {
+        @apply rounded border border-N300 p-2 mt-2 absolute scrollbar-hide;
+        background: white;
+        box-shadow: 0px 16px 32px rgba(75, 85, 101, 0.08);
+        /* min-width: 17.75rem; */
+        z-index: 100;
+    }
+
+    .label {
+        @apply absolute ml-4 -top-2 px-1 text-sm text-C500;
+        background: white;
+        z-index: 1;
+    }
+
+    .input {
+        @apply text-lg leading-6 text-N700 w-full border-none outline-none;
+    }
+
+    .dropdown-field {
+        @apply border border-[#8F95B2] rounded px-[1.208rem] py-2 relative flex items-center h-12;
+    }
+
+    .icon-clear {
+        @apply mr-4;
+    }
+
+    .checkbox {
+        @apply mr-[9.5px];
+    }
+
+    .dropdown-list-item {
+        @apply py-3 px-4 flex text-base cursor-default items-center gap-2;
+
+        &.-selected {
+            @apply bg-C50;
+        }
+    }
+
+    &.-with-component-trigger {
+        @apply border-none;
+    }
+}

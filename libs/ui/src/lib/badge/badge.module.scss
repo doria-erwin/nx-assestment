@@ -1,0 +1,53 @@
+.badge {
+    font-size: 0.625rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 0.15px;
+    
+    &.cyan {
+        background-color: theme('colors.CY100');
+        color: theme('colors.CY600');
+    }
+    
+    &.cornflower {
+        background-color: theme('colors.W100');
+        color: theme('colors.W600');
+    }
+    
+    &.lightGreen {
+        background-color: theme('colors.L100');
+        color: theme('colors.L600');
+    }
+    
+    &.neutral {
+        background-color: theme('colors.N100');
+        color: theme('colors.N600');
+    }
+    
+    &.violet {
+        background-color: theme('colors.V100');
+        color: theme('colors.V600');
+    }
+    
+    &.turquoise {
+        background-color: theme('colors.T100');
+        color: theme('colors.T600');
+    }
+    
+    &.orange {
+        background-color: theme('colors.O100');
+        color: theme('colors.O600');
+    }
+    
+    &.pink {
+        background-color: theme('colors.P100');
+        color: theme('colors.P600');
+    }
+    
+    &.error {
+        background-color: theme('colors.R50');
+        color: theme('colors.R400');
+    }
+}

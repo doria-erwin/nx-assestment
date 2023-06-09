@@ -1,0 +1,41 @@
+.toggle-wrapper {
+    @apply relative h-4 w-8 bg-N400 rounded-full inline-flex items-center;
+}
+.toggle-wrapper.isToggled {
+    @apply bg-C400;
+}
+
+.toggle-wrapper .toggle-switch {
+    @apply absolute h-3 w-3 rounded-full m-[2px] left-0 transition-all;
+    background: white;
+}
+
+.toggle-wrapper .toggle-switch.isToggled {
+    @apply absolute left-4 transition-all;
+}
+
+.toggle-wrapper.toggle-disabled {
+    @apply pointer-events-none bg-N100;
+}
+
+.toggle-wrapper.toggle-disabled .toggle-switch {
+    @apply bg-N400;
+}
+
+
+/* With icon */
+.toggle-wrapper.-withIcon {
+    @apply h-6 w-12 bg-N75 relative;
+
+    .toggle-switch {
+        @apply h-6 w-6 m-0 bg-C50;
+
+        &.isToggled {
+            @apply left-6;
+        }
+    }
+
+    .toggle-icon {
+        @apply flex z-10 items-center justify-between w-full mx-1;
+    }
+}
