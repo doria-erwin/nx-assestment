@@ -18,3 +18,41 @@ model User {
 
   @@map("user")
 }
+
+model Category {
+  id          String   @id @default(uuid()) @db.Char(36)
+  name        String   @unique @map("name")
+  description String   @map("description")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  products Product[] @relation("categoryProducts")
+
+  @@map("category")
+}
+
+model Product {
+  id          String   @id @default(uuid()) @db.Char(36)
+  name        String   @unique @map("name")
+  description String   @map("description")
+  price       Decimal  @map("price")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  categoryId String   @map("category_id")
+  category   Category @relation("categoryProducts", fields: [categoryId], references: [id])
+
+  pictures ProductPicture[] @relation("productPictures")
+
+  @@map("product")
+}
+
+model ProductPicture {
+  id  String @id @default(uuid()) @db.Char(36)
+  url String @map("url")
+
+  productId String  @map("product_id")
+  product   Product @relation("productPictures", fields: [productId], references: [id])
+
+  @@map("product_picture")
+}

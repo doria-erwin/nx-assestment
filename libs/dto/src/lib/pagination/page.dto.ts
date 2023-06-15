@@ -7,16 +7,16 @@ export class PageDto<T> {
   readonly data: T[];
 
   @ApiProperty()
-  nextCursorPointer!: any;
+  itemCount!: number;
 
   @ApiProperty()
-  prevCursorPointer!: any;
+  pageCount!: number;
 
-  constructor(data: T[], nextCursorPointer: string, prevCursorPointer: string) {
+  constructor(data: T[], itemCount: number, pageCount: number) {
     this.data = data;
 
-    this.nextCursorPointer = nextCursorPointer;
+    this.itemCount = itemCount;
 
-    this.prevCursorPointer = prevCursorPointer;
+    this.pageCount = pageCount;
   }
 }
