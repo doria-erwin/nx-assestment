@@ -10,3 +10,6 @@ export * from "./lib/products/categories.dto";
 export * from "./lib/products/categories.create.dto";
 export * from "./lib/pagination/query.dto";
 export * from "./lib/products/products.create.dto";
+export * from "./lib/products/products.update.dto";
+export * from "./lib/products/products.query.dto";
+export * from "./lib/response/response.message.dto";

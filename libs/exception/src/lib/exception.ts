@@ -6,8 +6,8 @@ export class Exception {
         return new HttpException(`${value} already exists.`, HttpStatus.BAD_REQUEST);
     }
 
-    static NOT_FOUND(field: string) {
-        return new HttpException(`No ${field} found.`, HttpStatus.BAD_REQUEST)
+    static NOT_FOUND(model: string) {
+        return new HttpException(`No ${model} found.`, HttpStatus.BAD_REQUEST)
     }
 
     static INVALID_EMAIL_OR_PASSWORD() {

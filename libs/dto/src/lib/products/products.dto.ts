@@ -1,8 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
-import {CategoriesDto} from "./categories.dto";
-import { IsArray, IsNumber } from "class-validator";
-import { ProductPictures } from "./products.pictures.dto";
-
+import { IsArray, IsNumber, IsUrl } from "class-validator";
 export class ProductsDto {
     
     @ApiProperty()
@@ -23,19 +20,15 @@ export class ProductsDto {
     @ApiProperty()
     categoryId!: string;
 
-    @ApiProperty({
-        required: false,
-        readOnly: true,
-        type: () => CategoriesDto
-    })
-    category!: CategoriesDto;
-
-    @ApiProperty({
-        required: false,
-        readOnly: true,
-        type: () => ProductPictures
-    })
+    @ApiProperty()
     @IsArray()
-    pictures!: ProductPictures[]
+    @IsUrl({}, { each: true })
+    pictures!: string[]
+
+    @ApiProperty()
+    createdAt!: Date;
+
+    @ApiProperty()
+    updatedAt!: Date;
 
 }

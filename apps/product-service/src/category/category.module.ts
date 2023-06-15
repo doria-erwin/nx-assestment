@@ -3,11 +3,13 @@ import { CategoryService } from './category.service';
 import { CoreLibModule } from '@core-lib';
 import { PrismaDbLibModule } from '@prisma-db-lib';
 import { CategoryController } from './category.controller';
+import { ProductServicePrismaLibModule } from '@product-service-prisma-lib';
 
 @Module({
   imports: [
     CoreLibModule,
-    PrismaDbLibModule
+    PrismaDbLibModule,
+    ProductServicePrismaLibModule
   ],
   providers: [
     CategoryService

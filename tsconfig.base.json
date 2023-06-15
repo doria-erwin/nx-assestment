@@ -33,6 +33,9 @@
       "@core-lib": [
         "libs/backend/core-lib/src/index.ts"
       ],
+      "@decorator": [
+        "libs/decorator/src/index.ts"
+      ],
       "@dto": [
         "libs/dto/src/index.ts"
       ],
@@ -40,10 +43,10 @@
         "libs/backend/dynamo-db-lib/src/index.ts"
       ],
       "@exception": [
-        "libs/libs/exception/src/index.ts"
+        "libs/exception/src/index.ts"
       ],
-      "@decorator": [
-        "libs/decorator/src/index.ts"
+      "@product-service-prisma-lib": [
+        "libs/backend/product-service-prisma-lib/src/index.ts"
       ],
       "@prisma-db-lib": [
         "libs/backend/prisma-db-lib/src/index.ts"

@@ -1,28 +1,34 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaDbLibService } from '@prisma-db-lib';
-import { CategoriesCreateDto, CategoriesDto, PageDto, QueryDto } from '@dto';
+import { CategoriesCreateDto, CategoriesDto, PageDto, QueryDto, ResponseMessageDto } from '@dto';
+import { Category } from '@prisma/client';
+import { CategoryServicePrismaLibService } from '@product-service-prisma-lib';
 
 @Injectable()
 export class CategoryService {
 
-    constructor(private prismaDbLib: PrismaDbLibService) { }
+    constructor(
+        private prismaDbLib: PrismaDbLibService,
+        private categoryServiceDbLib: CategoryServicePrismaLibService) { }
 
     async create(body: CategoriesCreateDto) {
         const { name, description } = body;
 
-        return await this.prismaDbLib.category.create({
+        const product = await this.prismaDbLib.category.create({
             data: {
                 name,
                 description
             }
         });
 
+        return this.mapToDto(product)
+
     }
 
     async update(id: string, body: CategoriesCreateDto) {
         const { name, description } = body;
 
-        return await this.prismaDbLib.category.update({
+        const category = await this.prismaDbLib.category.update({
             data: {
                 name,
                 description
@@ -31,14 +37,19 @@ export class CategoryService {
                 id
             }
         });
+
+        return this.mapToDto(category);
     }
 
     async findById(id: string) {
-        return await this.prismaDbLib.category.findFirstOrThrow({
+        const category = await this.prismaDbLib.category.findFirstOrThrow({
             where: {
-                id
+                id,
+                isDeleted: false
             }
         })
+
+        return this.mapToDto(category);
     }
 
     async findAll(query: QueryDto): Promise<PageDto<CategoriesDto>> {
@@ -47,7 +58,8 @@ export class CategoryService {
         const where = {
             name: {
                 contains: search
-            }
+            },
+            isDeleted: false
         };
 
         const [count, categories] = await this.prismaDbLib.$transaction([
@@ -70,6 +82,35 @@ export class CategoryService {
             Math.ceil(count / limit)
         );
 
+    }
+
+    async deleteById(id:string):Promise<ResponseMessageDto>{
+        await this.categoryServiceDbLib.isCategoryExistById(id, true);
+
+        await this.prismaDbLib.category.update({
+            where: {
+                id
+            },
+            data:{
+                isDeleted: true
+            }
+        })
+
+        return {
+            message: 'Successfully deleted category'
+        }
+    }
+
+    mapToDto(category: Category):CategoriesDto{
+        const {id, name, description, createdAt, updatedAt} = category;
+
+        return {
+            id,
+            name,
+            description,
+            createdAt,
+            updatedAt
+        }
     }
 
 }

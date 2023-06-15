@@ -1,5 +1,5 @@
 import { CategoriesCreateDto, CategoriesDto, PageDto, QueryDto } from '@dto';
-import { Body, Controller, Get, Param, ParseUUIDPipe, Post, Put, Query, UseFilters } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, ParseUUIDPipe, Post, Put, Query, UseFilters } from '@nestjs/common';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { CategoryService } from './category.service';
 import { PrismaClientExceptionFilter } from '@core-lib';
@@ -33,6 +33,11 @@ export class CategoryController {
     @PaginationResponse(CategoriesDto)
     async findAll(@Query() query: QueryDto): Promise<PageDto<CategoriesDto>> {
         return await this.categoryService.findAll(query);
+    }
+
+    @Delete(':id')
+    async deleteById(@Param('id', ParseUUIDPipe) id: string) {
+        return await this.categoryService.deleteById(id);
     }
 
 }
